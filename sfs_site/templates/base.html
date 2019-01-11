@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="5KK56OK4Cmr4e1qNXMo0CGHEP9SF2gOXp2dStdlMPQU" />
+    <title>{{ title }}</title>
+
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'style.css' %}" media="screen,projection" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    <header>
+        <div class="button-container">
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+        <div class="title"><span>Sam Fuller</span> <span class="subtitle">Software Engineer</span></div>
+        <div class="progress"><div class="indeterminate"></div></div>
+    </header>
+    <nav id="slide-out" class="side-nav fixed">
+        <ul>
+            {% for node in pages.children %}
+            {% if node.children|length > 0 %}
+            <li class="collapsible
+                {% if node.page.name == active_page_parent_name or node.page.name == active_page_name %}open{% endif %}
+                {% if node.page.name == active_page_name %}active{% endif %}">
+                <a href="/{{ node.page.name }}" class="waves-effect waves-teal bold">
+                    <i class="material-icons">{{ node.page.icon }}</i>
+                    {{ node.page.title }}
+                </a>
+                <ul class="collapsible-body">
+                {% for child_node in node.children %}
+                    <li class="{% if child_node.page.name == active_page_name %}active open{% endif %}">
+                        <a href="/{{ child_node.page.name }}" class="waves-effect waves-teal">
+                            <i class="material-icons">{{ child_node.page.icon }}</i>
+                            {{ child_node.page.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </li>
+            {% else %}
+            <li class="bold {% if node.page.name == active_page_name %}active{% endif %}">
+                <a href="/{{ node.page.name }}" class="waves-effect waves-teal">
+                    <i class="material-icons">{{ node.page.icon }}</i>
+                    {{ node.page.title }}
+                </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    <main>
+        <div id="content">
+            {{ content|safe }}
+        </div>
+    </main>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+            © {{ time.year }} Sam Fuller
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="{% static 'jquery/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'materialize/js/materialize.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/navigator.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/collapsible.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/ga.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+db.sqlite3
+.idea
+*.pyc
+
+sfs_site/static/bower_components
+venv

@@ -1,0 +1,188 @@
+
+html, body {
+    height: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+main {
+    min-height: calc(100% - 140px);
+    padding-top: 72px;
+}
+
+header {
+    height: 72px;
+    line-height: 56px;
+    width: 100%;
+    background-color: #00acc1;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+
+    position: fixed;
+    z-index: 1000;
+
+    color: #fff;
+}
+
+main, footer {
+    padding-left: 300px;
+    z-index: 1;
+}
+
+.side-nav {
+    margin-top: 72px;
+    z-index: 1;
+}
+
+.progress {
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    visibility: hidden;
+}
+
+header div.title {
+    padding-left: 20px;
+    position: absolute;
+    bottom: 0;
+    font-size: 2em;
+    font-weight: 300;
+    display: inline;
+    line-height: 62px;
+}
+
+header div.title .subtitle {
+    font-weight: 200;
+    font-size: .75em;
+}
+
+
+.card .card-content p.card-title {
+    line-height: normal;
+    margin-bottom: 10px;
+}
+
+.card.medium {
+    height: 425px;
+}
+
+.collapsible .collapsible-body {
+    display: block;
+}
+
+footer.page-footer {
+    height: 100px;
+    background-color: #00acc1;
+}
+
+footer.page-footer {
+    margin-top: 40px;
+}
+
+.footer-copyright {
+    margin-top: 0;
+}
+
+.row {
+    margin-bottom: 0;
+}
+
+header .button-container {
+    display: inline;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+header div.button-container {
+    line-height: 90px;
+    padding-left: 40px;
+    display: none;
+}
+
+a.button-collapse {
+    color: #fff;
+}
+
+.parallax-container {
+    height: 300px;
+}
+
+
+.icon {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.icon.github {
+    background-image: url('./img/github/GitHub-Mark-120px-plus.png');
+}
+
+.icon.linkedin {
+    background-image: url('./img/linkedin/In-Black-128px-TM.png');
+}
+
+.row .col img.store-badge {
+    width: 150px;
+    height: auto;
+}
+
+img.materialboxed {
+    width: 100%;
+    height: 100%;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+.resume ul {
+    margin-left: 20px;
+}
+
+.resume li {
+    list-style: disc outside !important;
+}
+
+
+@media only screen and (max-width: 992px) {
+    main, footer {
+        padding-left: 0px;
+    }
+
+    .side-nav {
+        margin-top: 0;
+        z-index: 999;
+        padding-top: 72px;
+    }
+
+    header {
+        position: absolute;
+    }
+
+    header div.button-container {
+        display: inline;
+    }
+}
+
+/* Make header look better on iPhone */
+@media only screen and (max-width: 420px) {
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    header div.button-container {
+        padding-left: 20px;
+
+    }
+
+    header div.title {
+        padding-left: 0px;
+        font-size: 1.5em;
+    }
+
+}

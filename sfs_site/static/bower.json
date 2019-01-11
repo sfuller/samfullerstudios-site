@@ -1,0 +1,21 @@
+{
+  "name": "static",
+  "authors": [
+    "Sam Fuller <sam@samfullerstudios.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "\"\"",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.97.8"
+  }
+}
