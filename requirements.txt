@@ -1,4 +1,4 @@
-django>=2.1,<2.2
-gunicorn
-pymysql
-psycopg2
+django==2.1.11
+gunicorn==19.9.0
+pymysql==0.9.3
+psycopg2==2.7.6.1
