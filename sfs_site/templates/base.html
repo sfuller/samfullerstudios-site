@@ -15,26 +15,25 @@
 <body>
     <header>
         <div class="button-container">
-            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="slide-out" class="button-collapse sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
         <div class="title"><span>Sam Fuller</span> <span class="subtitle">Software Engineer</span></div>
         <div class="progress"><div class="indeterminate"></div></div>
     </header>
-    <nav id="slide-out" class="side-nav fixed">
-        <ul>
+    <nav id="slide-out" class="sidenav sidenav-fixed">
+        <ul class="collapsible">
             {% for node in pages.children %}
             {% if node.children|length > 0 %}
-            <li class="collapsible
-                {% if node.page.name == active_page_parent_name or node.page.name == active_page_name %}open{% endif %}
-                {% if node.page.name == active_page_name %}active{% endif %}">
-                <a href="/{{ node.page.name }}" class="waves-effect waves-teal bold">
+            <li class="
+                {% if node.page.name == active_page_name %}current-page{% endif %}">
+                <a href="/{{ node.page.name }}" class="waves-effect waves-teal bold sidenav-close collapsible-header">
                     <i class="material-icons">{{ node.page.icon }}</i>
                     {{ node.page.title }}
                 </a>
                 <ul class="collapsible-body">
                 {% for child_node in node.children %}
-                    <li class="{% if child_node.page.name == active_page_name %}active open{% endif %}">
-                        <a href="/{{ child_node.page.name }}" class="waves-effect waves-teal">
+                    <li class="{% if child_node.page.name == active_page_name %}current-page{% endif %}">
+                        <a href="/{{ child_node.page.name }}" class="waves-effect waves-teal sidenav-close">
                             <i class="material-icons">{{ child_node.page.icon }}</i>
                             {{ child_node.page.title }}
                         </a>
@@ -43,11 +42,12 @@
                 </ul>
             </li>
             {% else %}
-            <li class="bold {% if node.page.name == active_page_name %}active{% endif %}">
-                <a href="/{{ node.page.name }}" class="waves-effect waves-teal">
+            <li class="bold {% if node.page.name == active_page_name %}current-page{% endif %}">
+                <a href="/{{ node.page.name }}" class="waves-effect waves-teal sidenav-close collapsible-header">
                     <i class="material-icons">{{ node.page.icon }}</i>
                     {{ node.page.title }}
                 </a>
+                <div class="collapsible-body"></div>
             </li>
             {% endif %}
             {% endfor %}
@@ -66,10 +66,10 @@
         </div>
     </footer>
 
-    <script type="text/javascript" src="{% static 'jquery/jquery.min.js' %}"></script>
+{#    <script type="text/javascript" src="{% static 'jquery/jquery.min.js' %}"></script>#}
     <script type="text/javascript" src="{% static 'materialize/js/materialize.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/util.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/navigator.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/collapsible.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/ga.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>

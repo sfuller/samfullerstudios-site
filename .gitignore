@@ -3,4 +3,5 @@ db.sqlite3
 *.pyc
 
 sfs_site/static/bower_components
+sfs_site/static/node_modules
 venv

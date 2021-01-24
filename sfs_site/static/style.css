@@ -28,9 +28,21 @@ main, footer {
     z-index: 1;
 }
 
-.side-nav {
+.sidenav {
     margin-top: 72px;
     z-index: 1;
+}
+
+.sidenav .collapsible li a {
+    padding-left: 32px;
+}
+
+.sidenav .collapsible li.active {
+    background-color: transparent;
+}
+
+.sidenav .collapsible li.current-page {
+    background-color: rgba(0,0,0,0.05);
 }
 
 .progress {
@@ -63,10 +75,6 @@ header div.title .subtitle {
 
 .card.medium {
     height: 425px;
-}
-
-.collapsible .collapsible-body {
-    display: block;
 }
 
 footer.page-footer {
@@ -153,7 +161,7 @@ h2 {
         padding-left: 0px;
     }
 
-    .side-nav {
+    .sidenav {
         margin-top: 0;
         z-index: 999;
         padding-top: 72px;
