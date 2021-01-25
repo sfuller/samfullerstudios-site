@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="5KK56OK4Cmr4e1qNXMo0CGHEP9SF2gOXp2dStdlMPQU" />
+    <meta name="theme-color" content="#00acc1" />
     <title>{{ title }}</title>
 
     <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -26,14 +27,14 @@
             {% if node.children|length > 0 %}
             <li class="
                 {% if node.page.name == active_page_name %}current-page{% endif %}">
-                <a href="/{{ node.page.name }}" class="waves-effect waves-teal bold sidenav-close collapsible-header">
+                <a href="/{{ node.page.name }}/" class="waves-effect waves-teal bold sidenav-close collapsible-header">
                     <i class="material-icons">{{ node.page.icon }}</i>
                     {{ node.page.title }}
                 </a>
                 <ul class="collapsible-body">
                 {% for child_node in node.children %}
                     <li class="{% if child_node.page.name == active_page_name %}current-page{% endif %}">
-                        <a href="/{{ child_node.page.name }}" class="waves-effect waves-teal sidenav-close">
+                        <a href="/{{ child_node.page.name }}/" class="waves-effect waves-teal sidenav-close">
                             <i class="material-icons">{{ child_node.page.icon }}</i>
                             {{ child_node.page.title }}
                         </a>
@@ -43,7 +44,7 @@
             </li>
             {% else %}
             <li class="bold {% if node.page.name == active_page_name %}current-page{% endif %}">
-                <a href="/{{ node.page.name }}" class="waves-effect waves-teal sidenav-close collapsible-header">
+                <a href="/{{ node.page.name }}/" class="waves-effect waves-teal sidenav-close collapsible-header">
                     <i class="material-icons">{{ node.page.icon }}</i>
                     {{ node.page.title }}
                 </a>

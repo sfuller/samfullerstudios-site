@@ -164,6 +164,7 @@ Navigator.prototype.set_content = function(content) {
 
 Navigator.prototype.handle_popstate = function(event) {
     if (!event.state) {
+        window.location.href = document.URL;
         return;
     }
     const url = event.state.url;

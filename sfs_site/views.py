@@ -84,17 +84,17 @@ class PageView(View):
         document: et.Element = html5lib.parse(content_text)
         body = select('body', document).get(0)
 
-        # Process image sources
-        for img in select('img[data-sfs-src]', body):
-            src = img.get_attr('src')
-            mode = img.get_attr('data-sfs-src')
+        # Process src attributes
+        for element in select('*[data-sfs-src]', body):
+            src = element.get_attr('src')
+            mode = element.get_attr('data-sfs-src')
 
             if mode == 'static':
-                img.set_attr('src', static(src))
+                element.set_attr('src', static(src))
             elif mode == 'file':
-                img.set_attr('src', file(src))
+                element.set_attr('src', file(src))
 
-            img.del_attr('data-sfs-src')
+            element.del_attr('data-sfs-src')
 
         # Process anchor hrefs
         for a in select('a[data-sfs-href]', body):
