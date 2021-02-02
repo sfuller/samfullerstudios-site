@@ -6,7 +6,7 @@ class Page(models.Model):
     name = models.CharField(max_length=32)
     title = models.CharField(max_length=128)
     icon = models.CharField(max_length=64, blank=True)
-    order = models.IntegerField()
+    order = models.IntegerField(default=0)
     content = models.TextField()
     parent = models.ForeignKey('Page', blank=True, null=True, on_delete=models.SET_NULL)
 

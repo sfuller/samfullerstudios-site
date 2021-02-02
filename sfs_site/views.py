@@ -1,15 +1,23 @@
 import datetime
 
+import html5lib
+import xml.etree.ElementTree as et
+
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import Context
-from django.template import Template
+from django.urls import reverse
 from django.views import View
+
+from pagebuilder import select
 from . import models
 import json
 import queue
 import django.template.loader
 import django.contrib.staticfiles.finders
+
+from .templatetags.sfs import file
 
 
 class PageData(object):
@@ -53,8 +61,7 @@ class PageView(View):
             content = template.render()
         else:
             status = 200
-            template = Template(page.content)
-            content = template.render(Context())
+            content = self.render_content(page.content)
             title = self.get_title_text(page.title)
             name = page.name
             if page.parent is not None:
@@ -72,6 +79,30 @@ class PageView(View):
             return self.render_fragment(request, data)
 
         return self.render_full_page(request, data)
+
+    def render_content(self, content_text: str) -> str:
+        document: et.Element = html5lib.parse(content_text)
+        body = select('body', document).get(0)
+
+        # Process src attributes
+        for element in select('*[data-sfs-src]', body):
+            src = element.get_attr('src')
+            mode = element.get_attr('data-sfs-src')
+
+            if mode == 'static':
+                element.set_attr('src', static(src))
+            elif mode == 'file':
+                element.set_attr('src', file(src))
+
+            element.del_attr('data-sfs-src')
+
+        # Process anchor hrefs
+        for a in select('a[data-sfs-href]', body):
+            name = a.get_attr('href')
+            a.set_attr('href', reverse('page', kwargs={'name': name}))
+            a.del_attr('data-sfs-href')
+
+        return html5lib.serialize(body)
 
     def get_common_context(self, data):
         return {

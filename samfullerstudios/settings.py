@@ -23,7 +23,7 @@ media_root = os.environ.get('SFS_MEDIA_ROOT', '/var/sfs/media')
 
 
 if not secret_key and is_debug:
-    secret_key = 'I\'m a stupid doodoo butt'
+    secret_key = 'plums'
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -125,6 +125,6 @@ MEDIA_ROOT = media_root
 
 STATICFILES_DIRS = [
     'sfs_site/static',
-    ('jquery', 'sfs_site/static/bower_components/jquery/dist'),
-    ('materialize', 'sfs_site/static/bower_components/materialize/dist')
+    ('jquery', 'sfs_site/static/node_modules/jquery/dist'),
+    ('materialize', 'sfs_site/static/node_modules/materialize-css/dist')
 ]

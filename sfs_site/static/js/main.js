@@ -1,20 +1,20 @@
-
-
 (function(){
-    var navigator = new Navigator();
+    const navigator = new Navigator();
 
-    var on_load = function(title, url) {
+    const on_load = function(title, url) {
         ga('set', { page: url, title: title});
         ga('send', 'pageview');
-        $('.parallax').parallax();
-        $('.materialboxed').materialbox();
+        M.Parallax.init(document.querySelectorAll('.parallax'), {});
+        M.Materialbox.init(document.querySelectorAll('.materialboxed'), {});
     };
     navigator.on_page_loaded = on_load;
 
-    $(function() {
+    document.addEventListener('DOMContentLoaded', function() {
         navigator.setup();
         ga('create', 'UA-9260053-4', 'auto');
         on_load();
-        $('.button-collapse').sideNav();
+
+        M.Sidenav.init(document.querySelectorAll('.sidenav'), {});
+        M.Collapsible.init(document.querySelectorAll('.collapsible'));
     });
 }());
